@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { TodoStore } from "../context/TodoContext";
 
 const AddTodo = () => {
@@ -7,9 +7,12 @@ const AddTodo = () => {
   const [details, setDetails] = useState("");
   // console.log(todolist);
 
+  // on submitting form
   const handleSubmit = e => {
+    // stop refreshing page 
     e.preventDefault();
 
+    // if fields are blank then used conditional rendering to display the alert fields are empty otherwise store data and call handleAddTodo in TodoContext to set the data inside their variables
     if (title.length != "") {
       const n_characters = details.split("").length;
       const n_words = details.split(" ").length;
@@ -18,9 +21,13 @@ const AddTodo = () => {
     } else {
       alert("Fields Are Empty!!!!");
     }
+
+    // here after the data is set and todo is made it make the input fields of title and details empty
     setTitle("");
     setDetails("");
   };
+
+  // created a simple form which takes input like title and details and on submitting form handleSubmit function runs
   return (
     <form
       onSubmit={handleSubmit}
@@ -30,17 +37,17 @@ const AddTodo = () => {
         type="text"
         placeholder="Title...😎"
         value={title}
-        className="text-2xl py-1 px-3 outline-none border-b-4 focus:border-b-blue-400 rounded-md uppercase"
+        className="text-2xl py-1 px-3 outline-none border-b-4 focus:border-b-pink-600 rounded-md uppercase"
         onChange={e => setTitle(e.target.value)}
       />
       <textarea
         type="text"
-        className="text-2xl py-1 px-3 outline-none border-b-4 focus:border-b-blue-400 resize-none rounded-xl"
+        className="text-2xl py-1 px-3 outline-none border-b-4 focus:border-b-pink-600 resize-none rounded-xl"
         placeholder="Details...📕"
         value={details}
         onChange={e => setDetails(e.target.value)}
       />
-      <button className="text-2xl py-1 px-3 outline-none border-4 bg-[#363636]  text-white hover:border-pink-300  rounded-full">
+      <button className="text-2xl py-1 px-3 outline-none border-4 bg-[#363636]  text-white hover:border-pink-600  rounded-full">
         Create
       </button>
     </form>

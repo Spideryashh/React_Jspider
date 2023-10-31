@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 
 export const TodoStore = createContext([]);
 
+// here we manage all the states like set data of children class
 const TodoContext = ({ children }) => {
 
   const [todolist, setTodolist] = useState([]);
@@ -35,7 +36,7 @@ const TodoContext = ({ children }) => {
  
   // control extra screen
   const handleReadOverlay = id => {
-    console.log(id);
+    // console.log(id);
     const data = todolist.filter(value => value.id === id);
     setShowTodoData({ ...data[0] });
     setShowreadOverlay(true);
@@ -43,6 +44,7 @@ const TodoContext = ({ children }) => {
 
   return (
     <TodoStore.Provider
+      // value passed here as a prop are accessible by all the childrens where this TodoStore in imported
       value={{
         todolist,
         handleAddTodo,

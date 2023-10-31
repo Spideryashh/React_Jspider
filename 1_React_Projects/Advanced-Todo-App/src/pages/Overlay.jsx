@@ -7,7 +7,9 @@ const Overlay = () => {
     useContext(TodoStore);
   const { id, title, details, n_characters, n_words, n_sentences, createdAt } =
     showTodoData;
-  console.log(showTodoData);
+  // console.log(showTodoData);
+
+  // conditional rendering shortcircuiting method to hide overlay screen 
   return (
     <>
       {showreadoverlay && (
@@ -20,7 +22,7 @@ const Overlay = () => {
               <h3 className="text-3xl bg-pink-600 text-white rounded-md p-2 font-semibold text-center uppercase">
                 {title}
               </h3>
-              <p className="text-3xl bg-slate-200 p-2 text-ellipsis whitespace-nowrap overflow-hidden h-[35vh] text-blue-600">
+              <p className="text-3xl bg-slate-200 p-2 whitespace-nowrap overflow-hidden h-[35vh] text-blue-600">
                 {details}
               </p>
               <div className="flex  flex-col gap-8 justify-center items-center">

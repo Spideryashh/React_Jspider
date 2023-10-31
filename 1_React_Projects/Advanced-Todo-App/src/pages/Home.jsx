@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
-import AddTodo from "../components/AddTodo";
+import { useContext } from "react";
 import { TodoStore } from "../context/TodoContext";
-import ShowAllTodos from "../components/showAllTodos";
+import AddTodo from "../components/AddTodo";
 import Overlay from "./Overlay";
+import ShowAllTodos from "../components/showAllTodos";
 
-
-
+// Homepage UI (all components combined)
 const Home = () => {
   const { todolist } = useContext(TodoStore);
   return (

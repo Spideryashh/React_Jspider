@@ -5,6 +5,8 @@ import { BiSolidEdit } from "react-icons/bi";
 const ShowAllTodos = () => {
   const { todolist, handleReadOverlay } = useContext(TodoStore);
   //   console.log("from show todos : ", todolist);
+
+  // UI of showAllTodos
   return (
     <section className=" w-[100%] flex justify-center items-center p-8">
       <article className="flex flex-wrap gap-6 w-[100%] ">
@@ -22,6 +24,7 @@ const ShowAllTodos = () => {
           return (
             <div
               className="flex flex-col w-[90%] lg:w-[25%]  gap-6 p-4 rounded-md border-slate-300 border-2 shadow-lg hover:shadow-2xl group hover:border-pink-600 bg-white "
+              // on clicking the div of todo We are calling handleReadOverlay in TodoContext which filters that todo id and set the value of showOverlay true so that we can see the Overlay UI of selected todo with id that we have filtered.
               onClick={() => handleReadOverlay(id)}
             >
               <h3 className="text-3xl bg-slate-200 rounded-md p-2 font-semibold text-cente uppercase">
