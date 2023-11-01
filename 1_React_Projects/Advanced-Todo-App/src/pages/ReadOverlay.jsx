@@ -3,7 +3,7 @@ import { TodoStore } from "../context/TodoContext";
 import { MdDeleteForever } from "react-icons/md";
 import { BiSolidEdit } from "react-icons/bi";
 const ReadOverlay = () => {
-  const { showTodoData, showreadoverlay, setShowreadOverlay } =
+  const { showTodoData, showreadoverlay, setShowreadOverlay,setShowdeleteOverlay,setDeleteTodo } =
     useContext(TodoStore);
   const { id, title, details, n_characters, n_words, n_sentences, createdAt } =
     showTodoData;
@@ -34,7 +34,11 @@ const ReadOverlay = () => {
                   <span className="text-center">Sentences : {n_sentences}</span>
                 </div>
                 <div className="flex justify-around  w-[100%]">
-                  <button className="bg-slate-800 p-2 rounded-lg hover:bg-red-700 ">
+                  <button className="bg-slate-800 p-2 rounded-lg hover:bg-red-700 "
+                  onClick={() => {
+                        setShowdeleteOverlay(true);
+                        setDeleteTodo(id);
+                      }}>
                     <MdDeleteForever className="text-2xl text-white" />
                   </button>
                   <button className="bg-slate-800 p-2 rounded-lg hover:bg-yellow-600 ">
