@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { TodoStore } from "../context/TodoContext";
 import AddTodo from "../components/AddTodo";
-import Overlay from "./Overlay";
+import ReadOverlay from "./ReadOverlay";
 import ShowAllTodos from "../components/showAllTodos";
+import DeleteOverlay from "./DeleteOverlay";
 
 // Homepage UI (all components combined)
 const Home = () => {
@@ -12,8 +13,9 @@ const Home = () => {
       <article className="flex flex-col items-center gap-8 w-full py-9">
         <h1 className="text-5xl  font-semibold text-[#363636] font-serif"> Advanced Todo App</h1>
         <AddTodo />
-        <Overlay />
+        <ReadOverlay />
         <ShowAllTodos />
+        <DeleteOverlay />
       </article>
     </section>
   );

@@ -3,14 +3,19 @@ import { TodoStore } from "../context/TodoContext";
 import { MdDeleteForever } from "react-icons/md";
 import { BiSolidEdit } from "react-icons/bi";
 const ShowAllTodos = () => {
-  const { todolist, handleReadOverlay } = useContext(TodoStore);
+  const { todolist, handleReadOverlay, setShowdeleteOverlay, setDeleteTodo } =useContext(TodoStore);
   //   console.log("from show todos : ", todolist);
 
   // UI of showAllTodos
   return (
     <section className=" w-[100%] flex justify-center items-center p-8">
       <article className="flex flex-wrap gap-6 w-[100%] ">
-        {todolist.map(value => {
+      {todolist.length == 0 ? (
+          <h2 className="text-2xl text-slate-500  font-semibold">
+            No Todo Available!!!!
+          </h2>
+        ) :
+        (todolist.map(value => {
           // Destructuring from individual Todo object
           const {
             id,
@@ -42,17 +47,23 @@ const ShowAllTodos = () => {
                   <span className="text-center">Sentences : {n_sentences}</span>
                 </div>
                 <div className="flex justify-around  w-[100%]">
-                  <button className="bg-slate-800 p-2 rounded-lg hover:bg-red-700 ">
+                  <button className="bg-slate-800 p-2 rounded-lg hover:bg-red-700 "
+                  onClick={() => {
+                        setShowdeleteOverlay(true);
+                        setDeleteTodo(id);
+                      }}>
                     <MdDeleteForever className="text-2xl text-white" />
                   </button>
-                  <button className="bg-slate-800 p-2 rounded-lg hover:bg-yellow-700 ">
+                  <button className="bg-slate-800 p-2 rounded-lg hover:bg-yellow-700 "
+                  >
                     <BiSolidEdit className="text-2xl text-white" />
+                    
                   </button>
                 </div>
               </div>
             </div>
           );
-        })}{" "}
+        }))}
       </article>
     </section>
   );

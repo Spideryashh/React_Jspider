@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { TodoStore } from "../context/TodoContext";
 import { MdDeleteForever } from "react-icons/md";
 import { BiSolidEdit } from "react-icons/bi";
-const Overlay = () => {
+const ReadOverlay = () => {
   const { showTodoData, showreadoverlay, setShowreadOverlay } =
     useContext(TodoStore);
   const { id, title, details, n_characters, n_words, n_sentences, createdAt } =
@@ -50,4 +50,4 @@ const Overlay = () => {
   );
 };
 
-export default Overlay;
+export default ReadOverlay;

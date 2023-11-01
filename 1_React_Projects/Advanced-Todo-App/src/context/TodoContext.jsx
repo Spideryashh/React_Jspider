@@ -2,13 +2,21 @@ import { createContext, useState } from "react";
 
 export const TodoStore = createContext([]);
 
-// here we manage all the states like set data of children class
 const TodoContext = ({ children }) => {
-
+  //! Basic requirements
   const [todolist, setTodolist] = useState([]);
+
+  //! Overlay States
+  //? States to handle Read overlay
   const [showreadoverlay, setShowreadOverlay] = useState(false);
   const [showTodoData, setShowTodoData] = useState({});
 
+  //? States to handle Delete overlay
+  const [showdeleteoverlay, setShowdeleteOverlay] = useState(false);
+  // we will use deletetodo state to store id of todo that we want to delete!
+  const [deletetodo, setDeleteTodo] = useState(false);
+
+  // if we need changes , we will do while working on project
   const handleAddTodo = ({
     title,
     details,
@@ -16,7 +24,7 @@ const TodoContext = ({ children }) => {
     n_sentences,
     n_words,
   }) => {
-    // console.log(title, details, n_characters, n_words, n_sentences);
+    console.log(title, details, n_characters, n_words, n_sentences);
     setTodolist([
       ...todolist,
       {
@@ -31,12 +39,19 @@ const TodoContext = ({ children }) => {
     ]);
   };
   const handleReadTodo = () => {};
-  const handleDeleteTodo = () => {};
+
+  const handleDeleteTodo = id => {
+    console.log("handleDeleteTodo id : ", id);
+    setTodolist(todolist.filter(value => value.id != id));
+    setShowdeleteOverlay(false);
+    setShowreadOverlay(false);
+  };
+
   const handleUpdateTodo = () => {};
- 
   // control extra screen
+
   const handleReadOverlay = id => {
-    // console.log(id);
+    console.log(id);
     const data = todolist.filter(value => value.id === id);
     setShowTodoData({ ...data[0] });
     setShowreadOverlay(true);
@@ -44,7 +59,6 @@ const TodoContext = ({ children }) => {
 
   return (
     <TodoStore.Provider
-      // value passed here as a prop are accessible by all the childrens where this TodoStore in imported
       value={{
         todolist,
         handleAddTodo,
@@ -55,6 +69,10 @@ const TodoContext = ({ children }) => {
         showTodoData,
         showreadoverlay,
         setShowreadOverlay,
+        deletetodo,
+        showdeleteoverlay,
+        setShowdeleteOverlay,
+        setDeleteTodo,
       }}
     >
       {children}
