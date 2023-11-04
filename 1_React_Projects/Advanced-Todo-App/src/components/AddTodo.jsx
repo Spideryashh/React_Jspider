@@ -5,7 +5,6 @@ const AddTodo = () => {
   const { todolist, handleAddTodo } = useContext(TodoStore);
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
-  // console.log(todolist);
 
   // on submitting form
   const handleSubmit = e => {
